@@ -46,7 +46,7 @@ const Header = () => {
                 <a href= "#"> Resources</a>
                 <a href= "#"> Community</a>
                 <a href= "#"> About Us</a>
-                <div className={styles.authButtons}>
+                <div className={styles.mobileButtons}>
                 <button className={styles.login}>Log In</button>
                 <button className={styles.signup}>Sign Up</button>
                 </div>
