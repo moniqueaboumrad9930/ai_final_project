@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from '../components/heroSection';
 import Header from '../components/header';
 import WhyLearn from '../components/whyLearn';
+import EducationModules from '../components/educationalModules';
 
 const LandingPage = () => {
     return (
@@ -9,6 +10,7 @@ const LandingPage = () => {
         <Header/>
         <HeroSection />
         <WhyLearn/>
+        <EducationModules/>
         </>
     );
 };

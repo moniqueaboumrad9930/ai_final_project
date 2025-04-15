@@ -4,9 +4,6 @@ import infoIcon from './infoIcon.svg';
 import linkIcon from './linkIcon.svg';
 import gearIcon from './gearIcon.svg';
 
-
-
-
     const cards = [
         {
           icon: infoIcon,
