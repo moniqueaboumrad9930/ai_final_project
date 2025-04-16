@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './educationalModules.modules.css';
+import styles from './educationalModules.module.css';
 import imgFairness from './imgFairness.png';
 
 
