@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './educationalModules.modules.css';
+import imgFairness from './imgFairness.png';
+
 
 
 const modules = [
   {
-    //image: imgFairness,
+    image: imgFairness,
     title: 'AI Fairness Fundamentals',
     description: 'Learn how to identify and address bias in AI systems to ensure equitable outcomes.',
     lessons: '4 Lessons',
