@@ -2,10 +2,12 @@ import React from 'react';
 import styles from './header.module.css';
 import logo from './ailogo.svg';
 import { useState } from 'react';
+import SignUpModal from './signUpModal';
 
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -36,8 +38,9 @@ const Header = () => {
             </nav>
             <div className={styles.authButtons}>
                 <button className={styles.login}>Log In</button>
-                <button className={styles.signup}>Sign Up</button>
+                <button className={styles.signup} onClick={() => setModalOpen(true)}>Sign Up</button>
             </div>
+            <SignUpModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
             {isOpen && (
             <div className={styles.mobileMenu}>
@@ -48,9 +51,11 @@ const Header = () => {
                 <a href= "#"> About Us</a>
                 <div className={styles.mobileButtons}>
                 <button className={styles.login}>Log In</button>
-                <button className={styles.signup}>Sign Up</button>
+                <button className={styles.signup} onClick={() => setModalOpen(true)}>Sign Up</button>
                 </div>
+                <SignUpModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
             </div>
+            
 
         )
         }
