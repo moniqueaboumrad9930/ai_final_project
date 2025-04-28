@@ -1,7 +1,7 @@
 import react from "react";
 import styles from './joinCommunity.module.css'
 
-function joinCommunity (){
+function JoinCommunity () {
     return (
         <section className={styles.section}>
             <h2 className={styles.title}>
@@ -15,4 +15,4 @@ function joinCommunity (){
     );
 }
 
-export default joinCommunity;
+export default JoinCommunity;

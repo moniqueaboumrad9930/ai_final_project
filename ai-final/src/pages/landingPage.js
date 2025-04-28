@@ -4,7 +4,7 @@ import Header from '../components/header';
 import WhyLearn from '../components/whyLearn';
 import EducationModules from '../components/educationalModules';
 import Footer from '../components/footer';
-import joinCommunity from '../components/joinCommunity';
+import JoinCommunity from '../components/joinCommunity';
 
 const LandingPage = () => {
     return (
@@ -13,7 +13,7 @@ const LandingPage = () => {
         <HeroSection />
         <WhyLearn/>
         <EducationModules/>
-        <joinCommunity/>
+        <JoinCommunity/>
         <Footer/>
         </>
     );
