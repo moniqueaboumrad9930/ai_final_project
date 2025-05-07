@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 220px;
+    background-color: #1f2937;
+    color: white;
+    padding: 2rem;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin: 1.5rem 0;
+    cursor: pointer;
+  }
+  
+  .main {
+    flex-grow: 1;
+    background-color: #f9fafb;
+    padding: 2rem;
+  }
+  
+

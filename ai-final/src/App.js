@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import ProtectedRoute from './components/ProtectedRoute';
-import Dashboard from './components/dashboard';
+import Dashboard from './pages/dashboard';
 import LandingPage from './pages/landingPage';
 
 function App() {

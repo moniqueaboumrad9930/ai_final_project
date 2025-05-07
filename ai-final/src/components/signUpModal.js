@@ -1,22 +1,23 @@
 import React, { use } from 'react';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
 import { updateProfile } from 'firebase/auth';
 import {doc, setDoc} from 'firebase/firestore';
 import {auth, db} from '../Firebase';
 import styles from './signUpModal.module.css';
 
 function SignUpModal({ isOpen, onClose }) {
+  const navigate = useNavigate();
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   if(!isOpen) return null;
+  
   
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -44,9 +45,22 @@ function SignUpModal({ isOpen, onClose }) {
           advanced: {completed: false, percent: 0}
         }
       });
-      //add navigation to dashboard 
-      onClose();
-      navigate('/dashboard');
+
+      onAuthStateChanged(auth, (user) => {
+        if(user){
+           //add navigation to dashboard 
+
+      console.log("Navigating to dashboard");
+      setTimeout(() => {
+        navigate('/dashboard');
+        onClose();
+
+      }, 100);
+      
+        }
+      });
+     
+   
     }catch(error){
       console.error('Sign Up Error:', error.message);
       //setError(error.message);
@@ -103,7 +117,7 @@ function SignUpModal({ isOpen, onClose }) {
 
             {error && <p className={styles.error}>{error}</p>}
 
-            <button type="submit" className={styles.submitButton}>Create Account</button>
+            <button type="submit" onSubmit={(handleSignUp)} className={styles.submitButton}>Create Account</button>
 
             <div className={styles.or}>
               <span>Or sign up with</span>
