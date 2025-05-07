@@ -39,7 +39,6 @@ function SignUpModal({ isOpen, onClose }) {
         name: fullName,
         email: email,
         progress: {
-          
           begginner: {completed : false, percent: 0},
           intermediate: {completed: false, percent: 0},
           advanced: {completed: false, percent: 0}
@@ -47,9 +46,10 @@ function SignUpModal({ isOpen, onClose }) {
       });
       //add navigation to dashboard 
       onClose();
-      navigate('/');
+      navigate('/dashboard');
     }catch(error){
       console.error('Sign Up Error:', error.message);
+      //setError(error.message);
     }
   };
 
