@@ -1,9 +1,49 @@
-import React from 'react';
+import React, { use } from 'react';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { updateProfile } from 'firebase/auth';
+import {doc, setDoc} from 'firebase/firestore';
+import {auth, db} from '../Firebase';
 import styles from './signUpModal.module.css';
 
 function SignUpModal({ isOpen, onClose }) {
-  if (!isOpen) return null;
+  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const navigate = useNavigate();
 
+  if(!isOpen) return null;
+  
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try{
+      const userCredential = await createUserWithEmailAndPassword(
+        auth, 
+        email,
+        password
+      );
+      await updateProfile(userCredential.user, {
+        displayName: fullName,
+      });
+  
+      //save inital user progress to db 
+      await setDoc(doc(db, 'users', userCredential.user.uid), {
+        name: fullName,
+        email: email,
+        progress: {},
+      });
+      //add navigation to dashboard 
+      onClose();
+      navigate();
+    }catch(error){
+      console.error('Sign Up Error:', error.message);
+    }
+  };
+
+
+  
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
