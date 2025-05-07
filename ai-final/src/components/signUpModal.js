@@ -12,12 +12,18 @@ function SignUpModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   if(!isOpen) return null;
   
   const handleSignUp = async (e) => {
     e.preventDefault();
+    if(password !== confirmPassword){
+      setError("Passwords do not match");
+      return;
+    }
     try{
       const userCredential = await createUserWithEmailAndPassword(
         auth, 
@@ -32,11 +38,16 @@ function SignUpModal({ isOpen, onClose }) {
       await setDoc(doc(db, 'users', userCredential.user.uid), {
         name: fullName,
         email: email,
-        progress: {},
+        progress: {
+          
+          begginner: {completed : false, percent: 0},
+          intermediate: {completed: false, percent: 0},
+          advanced: {completed: false, percent: 0}
+        }
       });
       //add navigation to dashboard 
       onClose();
-      navigate();
+      navigate('/');
     }catch(error){
       console.error('Sign Up Error:', error.message);
     }
@@ -63,16 +74,34 @@ function SignUpModal({ isOpen, onClose }) {
           </p>
 
           {/* Form fields */}
-          <form className={styles.form}>
-            <input type="text" placeholder="Full Name" />
-            <input type="email" placeholder="Email Address" />
-            <input type="password" placeholder="Password" />
-            <input type="password" placeholder="Confirm Password" />
+          <form className={styles.form} onSubmit={handleSignUp}>
+            <input type="text" 
+            placeholder="Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            />
+            <input type="email"
+             placeholder="Email Address"
+             value={email}
+             onChange={(e) => setEmail(e.target.value)}
+            />
+            <input type="password"
+             placeholder="Password"
+             value={password}
+             onChange={(e) => setPassword(e.target.value)}
+            />
+            <input type="password" 
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            />
 
             <div className={styles.terms}>
               <input type="checkbox" />
               <label>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
             </div>
+
+            {error && <p className={styles.error}>{error}</p>}
 
             <button type="submit" className={styles.submitButton}>Create Account</button>
 

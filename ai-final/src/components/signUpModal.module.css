@@ -162,4 +162,10 @@
     text-decoration: underline;
     font-weight: 500;
   }
+
+  .error{
+    color: red;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
   
