@@ -1,58 +1,32 @@
-.container {
+.dashboardContainer {
     display: flex;
-    min-height: 100vh;
-    background-color: #f9fafb;
+    height: 100vh;
     font-family: 'Inter', sans-serif;
   }
   
   .sidebar {
-    width: 250px;
-    background-color: #1f2937; /* dark blue/gray */
+    width: 220px;
+    background-color: #1f2a37;
     color: white;
     padding: 2rem 1rem;
   }
   
-  .sidebar h2 {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    margin: 1.25rem 0;
-    font-size: 0.95rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 6px;
-  }
-  
-  .sidebar li:hover {
-    background-color: #374151;
-  }
-  
-  .main {
+  .content {
     flex: 1;
-    padding: 2rem 3rem;
+    background-color: #f9fafb;
+    padding: 2rem;
   }
   
-  .main h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
+  .progressBar {
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1rem 0;
   }
   
-  .main p {
-    color: #6b7280;
+  .progress {
+    background-color: #10b981;
+    height: 8px;
+    width: 45%; /* dynamic */
   }
   
-  .courseGrid {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 1.5rem;
-  }
-  
-
