@@ -58,8 +58,8 @@ const Dashboard = () => {
   
           <div className={styles.courseCards}>
             <CourseCard
-              title="AI Ethics Fundamentals"
-              description="Learn the core principles of ethical AI development and implementation in this comprehensive course."
+              title="AI Fairness Fundamentals"
+              description="Learn how to identify and address bias in AI systems to ensure equitable outcomes."
               status={progress.beginner?.completed ? 'Completed' : 'Continue'}
               percent={progress.beginner?.percent || 0}
               level="Beginner"
