@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeroSection from '../components/heroSection';
 import Header from '../components/header';
 import WhyLearn from '../components/whyLearn';
@@ -8,9 +8,10 @@ import JoinCommunity from '../components/joinCommunity';
 import LearnFromExperts from '../components/learnFromExperts';
 
 const LandingPage = () => {
+    const [mode, setMode] = useState('signup');
     return (
         <>
-        <Header/>
+        <Header setMode={setMode}/>
         <HeroSection />
         <WhyLearn/>
         <EducationModules/>

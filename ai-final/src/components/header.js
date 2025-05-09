@@ -5,7 +5,7 @@ import { useState } from 'react';
 import SignUpModal from './signUpModal';
 
 
-const Header = () => {
+const Header = ({setMode, mode}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -37,30 +37,47 @@ const Header = () => {
                 <a href= "#"> About Us</a>
             </nav>
             <div className={styles.authButtons}>
-                <button className={styles.login}>Log In</button>
-                <button className={styles.signup} onClick={() => setModalOpen(true)}>Sign Up</button>
-            </div>
-            <SignUpModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+         <button
+        className={styles.login}
+        onClick={() => {
+          setMode('login');
+          setModalOpen(true);
+        }}
+      >
+        Log In
+      </button>
+
+      <button
+        className={styles.signup}
+        onClick={() => {
+          setMode('signup');
+          setModalOpen(true);
+        }}
+      >
+        Sign Up
+      </button>
+    </div>
+  
+    <SignUpModal isOpen={modalOpen} onClose={() => setModalOpen(false)} mode={mode}/>
 
             {isOpen && (
             <div className={styles.mobileMenu}>
-                <a href= "#"> Home</a>
-                <a href= "#"> Modules</a>
-                <a href= "#"> Resources</a>
-                <a href= "#"> Community</a>
-                <a href= "#"> About Us</a>
-                <div className={styles.mobileButtons}>
-                <button className={styles.login}>Log In</button>
-                <button className={styles.signup} onClick={() => setModalOpen(true)}>Sign Up</button>
-                </div>
-                <SignUpModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+                    <a href="#"> Home</a>
+                    <a href="#"> Modules</a>
+                    <a href="#"> Resources</a>
+                    <a href="#"> Community</a>
+                    <a href="#"> About Us</a>
+                    <div className={styles.mobileButtons}>
+                    <button className={styles.login} onClick={() => {setMode('login');setModalOpen(true); setIsOpen(false);}} >Log In</button>
+                    <button className={styles.signup} onClick={() => {setModalOpen(true); setMode('signup');setIsOpen(false);}}>Sign Up</button>
+                </div><SignUpModal isOpen={modalOpen} onClose={() => setModalOpen(false)} mode={mode} />
             </div>
+            )}
+    </header>
+)};
+
+
             
 
-        )
-        }
-    </header>
-    );
-}
-
+   
 export default Header;

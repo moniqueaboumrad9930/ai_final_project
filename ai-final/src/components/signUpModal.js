@@ -72,15 +72,29 @@ function SignUpModal({ isOpen, onClose }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError(''); // reset error
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/dashboard');
       onClose();
-    } catch (error) {
-      console.error('Login Error:', error.message);
-      setError('Invalid credentials');
+    } catch (err) {
+      console.error('Login Error:', err.message);
+      switch (err.code) {
+        case 'auth/user-not-found':
+          setError('No account found with this email.');
+          break;
+        case 'auth/wrong-password':
+          setError('Incorrect password.');
+          break;
+        case 'auth/invalid-email':
+          setError('Please enter a valid email.');
+          break;
+        default:
+          setError('Failed to log in. Please try again.');
+      }
     }
   };
+  
 
 
   
@@ -164,6 +178,16 @@ function SignUpModal({ isOpen, onClose }) {
           </a>
            </p>
           )}
+
+        {mode === 'login' && (
+        <p className={styles.loginText}>
+          Don’t have an account?{" "}
+          <a href="#" onClick={(e) => { e.preventDefault(); setMode('signup'); }}>
+          Sign up
+          </a>
+        </p>
+        )}
+
 
           </form>
         </div>
