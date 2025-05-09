@@ -1,14 +1,17 @@
 import React, { use } from 'react';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { createUserWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword} from 'firebase/auth';
 import { updateProfile } from 'firebase/auth';
 import {doc, setDoc} from 'firebase/firestore';
 import {auth, db} from '../Firebase';
 import styles from './signUpModal.module.css';
 
+
 function SignUpModal({ isOpen, onClose }) {
   const navigate = useNavigate();
+  
+  const [mode, setMode] = useState('signup');
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -67,6 +70,18 @@ function SignUpModal({ isOpen, onClose }) {
     }
   };
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/dashboard');
+      onClose();
+    } catch (error) {
+      console.error('Login Error:', error.message);
+      setError('Invalid credentials');
+    }
+  };
+
 
   
   return (
@@ -77,23 +92,40 @@ function SignUpModal({ isOpen, onClose }) {
           
           {/* Only tabs now */}
           <div className={styles.tabs}>
-            <span className={styles.tab}>Log In</span>
-            <span className={`${styles.tab} ${styles.active}`}>Sign Up</span>
-          </div>
+          <span className={`${styles.tab} ${mode === 'login' ? styles.active : ''}`}
+          onClick={() => setMode('login')}
+          >
+          Log In
+         </span>
+         <span className={`${styles.tab} ${mode === 'signup' ? styles.active : ''}`}
+          onClick={() => setMode('signup')}
+         >
+         Sign Up
+        </span>
+        </div>
+
+       
 
           {/* Form title */}
-          <h3 className={styles.title}>Create Your Account</h3>
-          <p className={styles.subtitle}>
-            Join our community and start your learning journey today.
-          </p>
+          {mode === 'signup' && (
+          <>
+          <h3 className={styles.title}>Create Your Account</h3><p className={styles.subtitle}>
+              Join our community and start your learning journey today.
+            </p>
+            </>
+
+          )}
+       
 
           {/* Form fields */}
-          <form className={styles.form} onSubmit={handleSignUp}>
+          <form className={styles.form} onSubmit={mode === 'signup' ? handleSignUp : handleLogin}>
+          {mode === 'signup' && (
             <input type="text" 
             placeholder="Full Name"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             />
+          )}
             <input type="email"
              placeholder="Email Address"
              value={email}
@@ -104,34 +136,35 @@ function SignUpModal({ isOpen, onClose }) {
              value={password}
              onChange={(e) => setPassword(e.target.value)}
             />
+            {mode === 'signup' && (
             <input type="password" 
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             />
-
+            )}
+            {mode === 'signup' && (
             <div className={styles.terms}>
               <input type="checkbox" />
               <label>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
             </div>
+            )}
 
             {error && <p className={styles.error}>{error}</p>}
 
-            <button type="submit" onSubmit={(handleSignUp)} className={styles.submitButton}>Create Account</button>
+            <button type="submit" className={styles.submitButton}>
+            {mode === 'signup' ? 'Create Account' : 'Log In'}
+           </button>
+        
+           {mode === 'signup' && (
+          <p className={styles.loginText}>
+               Already have an account?{" "}
+           <a href="#" onClick={(e) => { e.preventDefault(); setMode('login'); }}>
+            Log in
+          </a>
+           </p>
+          )}
 
-            <div className={styles.or}>
-              <span>Or sign up with</span>
-            </div>
-
-            <div className={styles.socialIcons}>
-              <button>G</button>
-              <button>F</button>
-              <button>A</button>
-            </div>
-
-            <p className={styles.loginText}>
-              Already have an account? <a href="#">Log in</a>
-            </p>
           </form>
         </div>
       </div>
