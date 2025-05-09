@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './quiz.module.css';
 
-const Quiz = ({ title, questions, onComplete }) => {
+const Quiz = ({ title, questions, onComplete}) => {
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(null);
@@ -55,9 +55,11 @@ const Quiz = ({ title, questions, onComplete }) => {
       ))}
 
       {!submitted && (
-        <button className={styles.submitButton} onClick={handleSubmit}>
-          Submit Quiz ({Object.keys(answers).length}/{questions.length} Answered)
-        </button>
+        <button onClick={() => onComplete(answers)} className={styles.submitButton}>
+        Submit Quiz ({Object.keys(answers).length}/{questions.length} Answered)
+      </button>
+      
+       
       )}
 
       {submitted && (

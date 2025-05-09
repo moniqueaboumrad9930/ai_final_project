@@ -1,0 +1,126 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .header {
+    text-align: center;
+    background: linear-gradient(to bottom, #2e61db, #3b82f6);
+    color: white;
+    padding: 2rem 1rem;
+    border-radius: 8px;
+  }
+  
+  .header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header p {
+    font-size: 1rem;
+    opacity: 0.95;
+  }
+  
+  .objectives {
+    background-color: white;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  
+  .objectives h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .objectives ul {
+    list-style: none;
+    padding-left: 1rem;
+  }
+  
+  .objectives li::before {
+    content: '•';
+    color: #3b82f6;
+    display: inline-block;
+    width: 1rem;
+    margin-left: -1rem;
+  }
+  
+  .module {
+    background-color: white;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  
+  .module h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .module p,
+  .module li {
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card {
+    background-color: #f9fafb;
+    border-left: 4px solid #3b82f6;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+  }
+  
+  .card h4 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+  }
+  
+  .card ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+  }
+  
+  .quizSection {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    margin-top: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  
+  .quizSection h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .quizSection p {
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+  
+  .quizButton {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  
+  .quizButton:hover {
+    background-color: #2563eb;
+  }
+  
