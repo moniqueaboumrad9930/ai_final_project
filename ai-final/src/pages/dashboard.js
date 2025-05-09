@@ -68,8 +68,8 @@ const Dashboard = () => {
               onClick={() => navigate('/courses/fairness')}
             />
             <CourseCard
-              title="AI Governance Frameworks"
-              description="Explore global AI governance frameworks and learn how to implement them in your organization."
+              title="Transparency in AI"
+              description="Explore methods for making AI systems more explainable and understandable."
               status={progress.intermediate?.completed ? 'Completed' : progress.beginner?.completed ? 'Continue' : 'Locked'}
               percent={progress.intermediate?.percent || 0}
               level="Intermediate"
@@ -79,8 +79,8 @@ const Dashboard = () => {
               actionText={progress.beginner?.completed ? 'Continue' : 'Locked'}
             />
             <CourseCard
-              title="Responsible AI Development"
-              description="Master the techniques and best practices for developing AI systems that are fair, transparent, and accountable."
+              title="AI Accountability"
+              description="Understand frameworks for ensuring responsible development and use of AI technologies."
               status={progress.advanced?.completed ? 'Completed' : progress.intermediate?.completed ? 'Continue' : 'Locked'}
               percent={progress.advanced?.percent || 0}
               level="Advanced"
