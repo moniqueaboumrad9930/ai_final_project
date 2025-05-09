@@ -68,9 +68,23 @@ const Header = ({setMode, mode}) => {
                     <a href="#"> Community</a>
                     <a href="#"> About Us</a>
                     <div className={styles.mobileButtons}>
-                    <button className={styles.login} onClick={() => {setMode('login');setModalOpen(true); setIsOpen(false);}} >Log In</button>
-                    <button className={styles.signup} onClick={() => {setModalOpen(true); setMode('signup');setIsOpen(false);}}>Sign Up</button>
-                </div><SignUpModal isOpen={modalOpen} onClose={() => setModalOpen(false)} mode={mode} />
+                    <button className={styles.login} 
+                    onClick={() => {
+                        setMode('login');
+                        setTimeout(()=>{
+                        setModalOpen(true); 
+                        setIsOpen(false);
+                        }, 0);}}
+                         >Log In</button>
+                    <button className={styles.signup}
+                     onClick={() => {
+                        setMode('signup');
+                        setTimeout(()=>{
+                            setModalOpen(true); 
+                            setIsOpen(false);
+                        }, 0);
+                        }}>Sign Up</button>
+                </div>
             </div>
             )}
     </header>

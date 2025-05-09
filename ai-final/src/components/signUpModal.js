@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword} from 'firebase/auth';
 import { updateProfile } from 'firebase/auth';
@@ -12,15 +12,16 @@ function SignUpModal({ isOpen, onClose }) {
   const navigate = useNavigate();
   
   const [mode, setMode] = useState('signup');
-  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  
+  
 
   if(!isOpen) return null;
-  
+ 
   
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -51,7 +52,7 @@ function SignUpModal({ isOpen, onClose }) {
 
       onAuthStateChanged(auth, (user) => {
         if(user){
-           //add navigation to dashboard 
+           
 
       console.log("Navigating to dashboard");
       setTimeout(() => {
@@ -128,6 +129,12 @@ function SignUpModal({ isOpen, onClose }) {
             </p>
             </>
 
+          )}
+          {mode === 'login' && (
+            <>
+            <h3  className={styles.title}>Continue your Learning Journey</h3>
+            <p className={styles.subtitle}>Pick up where you left off</p>
+            </>
           )}
        
 

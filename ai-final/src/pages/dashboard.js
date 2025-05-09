@@ -5,6 +5,7 @@ import {doc, getDoc} from 'firebase/firestore';
 import {db} from '../Firebase';
 import Sidebar from "../components/sidebar";
 import CourseCard from "../components/CourseCard";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -12,6 +13,7 @@ import CourseCard from "../components/CourseCard";
 const Dashboard = () => {
     const { currentUser } = useAuth();
     const [progress, setProgress] = useState(null);
+    const navigate = useNavigate();
   
     useEffect(() => {
       const fetchProgress = async () => {
@@ -63,6 +65,7 @@ const Dashboard = () => {
               level="Beginner"
               duration="8 hours"
               actionText={progress.beginner?.completed ? 'Review' : 'Continue'}
+              onClick={() => navigate('/courses/fairness')}
             />
             <CourseCard
               title="AI Governance Frameworks"

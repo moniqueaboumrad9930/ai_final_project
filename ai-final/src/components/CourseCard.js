@@ -10,10 +10,11 @@ const CourseCard = ({
   duration,
   status,
   locked,
-  actionText
+  actionText,
+  onClick
 }) => {
   return (
-    <div className={`${styles.card} ${locked ? styles.locked : ''}`}>
+    <div className={`${styles.card} ${locked ? styles.locked : ''}`}  onClick={!locked ? onClick : null}>
       <div className={styles.header}>
         <h3>{title}</h3>
         <p className={styles.level}>{level} • {duration}</p>
