@@ -2,31 +2,49 @@
     display: flex;
     height: 100vh;
     font-family: 'Inter', sans-serif;
-  }
-  
-  .sidebar {
-    width: 220px;
-    background-color: #1f2a37;
-    color: white;
-    padding: 2rem 1rem;
+    background-color: #f9fafb;
   }
   
   .content {
-    flex: 1;
+    flex-grow: 1;
+    padding: 2rem 3rem;
     background-color: #f9fafb;
-    padding: 2rem;
+    overflow-y: auto;
   }
   
-  .progressBar {
-    background: #e5e7eb;
+  .dashboardHeader h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dashboardHeader p {
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+  
+  .learningBar {
+    margin-top: 1.5rem;
+  }
+  
+  .progressBarOuter {
+    background-color: #e5e7eb;
     border-radius: 10px;
+    height: 10px;
+    width: 100%;
+    margin: 0.5rem 0;
     overflow: hidden;
-    margin: 1rem 0;
   }
   
-  .progress {
-    background-color: #10b981;
-    height: 8px;
-    width: 45%; /* dynamic */
+  .progressBarInner {
+    background-color: #3b82f6;
+    height: 100%;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  .courseCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
   }
   

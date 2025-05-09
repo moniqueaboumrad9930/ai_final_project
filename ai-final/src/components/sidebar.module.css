@@ -1,0 +1,41 @@
+/* sidebar.module.css */
+
+.sidebar {
+    width: 250px;
+    background-color: #1f2937;
+    color: white;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+  
+  .navList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .navList li {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  
+  .navList li:hover {
+    background-color: #374151;
+  }
+  
+  .active {
+    background-color: #2563eb;
+    font-weight: 600;
+  }
+  
